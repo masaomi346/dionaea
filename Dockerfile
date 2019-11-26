@@ -48,5 +48,3 @@ COPY mssql.py /opt/dionaea/lib/dionaea/python/dionaea/mssql/
 COPY extras.py /opt/dionaea/lib/dionaea/python/dionaea/smb/
 
 EXPOSE 21 42 69/udp 80 135 443 445 1433 1723 1883 1900/udp 3306 5060 5060/udp 5061 11211
-
-CMD ["/opt/dionaea/bin/dionaea" "-u" "dionaea" "-g" "dionaea" "-c" "/opt/dionaea/etc/dionaea/dionaea.cfg"]
