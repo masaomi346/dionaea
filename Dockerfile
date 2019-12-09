@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
 RUN apt update && \
-    apt install -y \
+    apt install -y --no-install-recommends \
     build-essential \
     cmake \
     check \
@@ -38,7 +38,10 @@ RUN apt update && \
     make install && \
     groupadd --gid 1000 dionaea && \
     useradd -m --uid 1000 --gid 1000 dionaea && \
-    chown -R dionaea:dionaea /opt/dionaea/var
+    chown -R dionaea:dionaea /opt/dionaea/var && \
+    rm -rf /var/lib/apt/lists/*
+
+USER dionaea:dionaea
 
 COPY dionaea.cfg /opt/dionaea/etc/dionaea/dionaea.cfg
 COPY ftp.py /opt/dionaea/lib/dionaea/python/dionaea/
