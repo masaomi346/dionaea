@@ -39,6 +39,8 @@ RUN apt update && \
     groupadd --gid 1000 dionaea && \
     useradd -m --uid 1000 --gid 1000 dionaea && \
     chown -R dionaea:dionaea /opt/dionaea/var && \
+    apt autoremove -y \
+    git && \
     rm -rf /var/lib/apt/lists/*
 
 USER dionaea:dionaea
